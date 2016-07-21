@@ -1,7 +1,11 @@
-# XenForms
+#XenForms
 
 XenForms is a Xamarin.Forms UI Designer. It allows you to open, visually manipulate, and save out XAML. There are two applications that collectively make up the product.
 
+##Donate
+The XenForms source has been made available under the MIT License. However, if you would like to donate money to the development effort, please use this [PayPal Donation Page](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BDVKB4VCKYEZ8).
+
+##Definitions
 1. XenForms Toolbox
  
  The desktop application, containing the visual tree outline and property editors.
@@ -64,6 +68,6 @@ XamarinFormsReaction.Register<GetVisualTreeRequest, GetVisualTreeReaction<Visual
 ```
 
 ##Roadmap and Contributing 
-I have a [project board](https://trello.com/b/dAZJ4QkT/xenforms-beta-roadmap) on Trello that I use to maintain my backlog of work. Rewriting the XAML load & save features is crucial. The project started as a visual tree inspector, and saving XAML was *bolted* on in the last few cycles. You can see that by viewing the ```XamlPostProcessor`` type.
+I have a [project board](https://trello.com/b/dAZJ4QkT/xenforms-beta-roadmap) on Trello that I use to maintain my backlog of work. Rewriting the XAML load & save features is crucial. The project started as a visual tree inspector, and saving XAML was *bolted* on in the last few cycles. You can see that by viewing the ``XamlPostProcessor`` type.
 
 I happily accept pull requests. :P
