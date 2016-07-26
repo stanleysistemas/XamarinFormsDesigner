@@ -4,7 +4,9 @@ using Eto.Forms;
 using XenForms.Core.Toolbox;
 using XenForms.Core.Toolbox.Settings;
 using XenForms.Core.Toolbox.Shell;
+using XenForms.Toolbox.UI.Resources;
 using XenForms.Toolbox.UI.Shell;
+using XenForms.Toolbox.UI.Shell.Styling;
 
 namespace XenForms.Toolbox.UI.Settings.Environment
 {
@@ -24,7 +26,10 @@ namespace XenForms.Toolbox.UI.Settings.Environment
 
         protected override Control OnDefineLayout()
         {
-            var layout = new TableLayout(1, 4) {DataContext = _vm};
+            var layout = new TableLayout(1, 4)
+            {
+                DataContext = _vm
+            };
 
             layout.Add(CreateAppearanceGroup(), 0, 0, true, false);
             layout.Add(CreatePathsGroup(), 0, 1, true, false);
@@ -44,6 +49,8 @@ namespace XenForms.Toolbox.UI.Settings.Environment
             _vm.DefaultProjectDirectory = _store.GetString(UserSettingKeys.Builtin.DefaultProjectDirectory);
             _vm.XamarinStudioDirectory = _store.GetString(UserSettingKeys.Builtin.XamarinStudioDirectory);
             _vm.AdbLocation = _store.GetString(UserSettingKeys.Builtin.AdbLocation);
+
+            // set original adb location
             _vm.OriginalAdbLocation = _vm.AdbLocation;
         }
 
@@ -66,7 +73,7 @@ namespace XenForms.Toolbox.UI.Settings.Environment
             {
                 MessageBox.Show(Application.Instance.MainForm,
                     "You will need to restart the application for the changes to take effect.",
-                    "XenForms",
+                    AppResource.Title,
                     MessageBoxButtons.OK);
             }
         }
@@ -74,7 +81,12 @@ namespace XenForms.Toolbox.UI.Settings.Environment
 
         private Control CreateLoggingGroup()
         {
-            var group = new GroupBox { Text = "Logging" };
+            var group = new GroupBox
+            {
+                Padding = AppStyles.PanelPadding,
+                Text = "Logging"
+            };
+
             var layout = new TableLayout(1, 3);
 
             var enableTrace = new CheckBox { Text = "Enable trace level" };
@@ -90,7 +102,11 @@ namespace XenForms.Toolbox.UI.Settings.Environment
 
         private Control CreateAppearanceGroup()
         {
-            var group = new GroupBox { Text = "Appearance" };
+            var group = new GroupBox
+            {
+                Padding = AppStyles.PanelPadding,
+                Text = "Appearance"
+            };
             var layout = new TableLayout(1, 3);
 
             var connectOnStartup = new CheckBox { Text = "Show connection dialog on application startup" };
@@ -106,7 +122,11 @@ namespace XenForms.Toolbox.UI.Settings.Environment
 
         private Control CreatePathsGroup()
         {
-            var group = new GroupBox {Text = "Paths"};
+            var group = new GroupBox
+            {
+                Padding = AppStyles.PanelPadding,
+                Text = "Paths"
+            };
 
             var layout = new TableLayout(1, 3)
             {

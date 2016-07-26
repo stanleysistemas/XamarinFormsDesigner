@@ -9,6 +9,7 @@ using XenForms.Core.Reflection;
 using XenForms.Core.Toolbox;
 using XenForms.Toolbox.UI.Resources;
 using XenForms.Toolbox.UI.Shell.Images;
+using XenForms.Toolbox.UI.Shell.Styling;
 
 namespace XenForms.Toolbox.UI.Shell
 {
@@ -22,8 +23,8 @@ namespace XenForms.Toolbox.UI.Shell
 
         private Dialog _dialog;
         private TreeView _treeView;
-        private Panel _settingsPanelContainer;
-        private Button _cancelButton;
+        private Panel _panelContainer;
+        private Button _cancel;
 
 
         public SettingsDialog(IFindCustomAttributes<SettingsPanelAttribute> settingAttributes)
@@ -43,42 +44,46 @@ namespace XenForms.Toolbox.UI.Shell
 
         protected override Control OnDefineLayout()
         {
-            var footer = CreateFooter();
-            _settingsPanelContainer = new Panel {Padding = new Padding(0,0,5,0)};
-            var layout = new TableLayout(1, 2);
-
-
-            _dialog = new Dialog
+            _panelContainer = new Panel
             {
-                Title = SettingsResource.Dialog_title,
-                ClientSize = new Size(685, 400),
-                AbortButton = _cancelButton,
-                Icon = AppImages.Xf,
-                ShowInTaskbar = false
+                Padding = new Padding(5, 0, 0, 0)
             };
 
+            var size = new Size(685, 400);
+            var footer = CreateFooter();
+            var layout = new TableLayout(1, 2);
 
             _treeView = CreateTreeView();
             PopulateTreeView();
 
+            _dialog = new Dialog
+            {
+                Title = SettingsResource.Dialog_title,
+                ClientSize = size,
+                MinimumSize = size,
+                AbortButton = _cancel,
+                Icon = AppImages.Xf,
+                Padding = AppStyles.WindowPadding,
+                ShowInTaskbar = false,
+                Resizable = true
+            };
 
             var splitter = new Splitter
             {
                 FixedPanel = SplitterFixedPanel.Panel1,
                 Orientation = Orientation.Horizontal,
                 Panel1 = _treeView,
-                Panel2 = _settingsPanelContainer,
-                Position = 200,
+                Panel2 = _panelContainer,
+                Position = 210
             };
-
+            
             layout.Add(splitter, 0, 0, true, true);
             layout.Add(footer, 0, 1, false, false);
 
-            layout.Padding = new Padding(5,5,0,0);
             _treeView.SelectionChanged += async (s, e) => await OnTreeViewSelectionChanged(s, e);
             _treeView.LoadComplete += OnTreeViewLoadComplete;
-            _dialog.Content = layout;
 
+            _dialog.Content = layout;
             return _dialog;
         }
 
@@ -92,8 +97,7 @@ namespace XenForms.Toolbox.UI.Shell
         private Control CreateFooter()
         {
             var ok = new Button { Text = CommonResource.Ok };
-            _cancelButton = new Button { Text = CommonResource.Cancel };
-
+            _cancel = new Button { Text = CommonResource.Cancel };
 
             ok.Click += async (s, e) =>
             {
@@ -101,18 +105,17 @@ namespace XenForms.Toolbox.UI.Shell
                 CloseDialog();
             };
 
-            _cancelButton.Click += (s, e) => { CloseDialog(); };
-
+            _cancel.Click += (s, e) => { CloseDialog(); };
 
             var layout = new TableLayout(3, 1)
             {
-                Padding = new Padding(10),
+                Padding = new Padding(0, 0, 0, 5),
                 Spacing = new Size(5, 0)
             };
 
             layout.Add(null, 0 ,0, true, true);
-            layout.Add(ok, 1,0, false,false);
-            layout.Add(_cancelButton, 2, 0, false, false);
+            layout.Add(_cancel, 1,0, false,false);
+            layout.Add(ok, 2, 0, false, false);
 
             return layout;
         }
@@ -194,7 +197,7 @@ namespace XenForms.Toolbox.UI.Shell
                 view = panel.View;
             }
 
-            _settingsPanelContainer.Content = view;
+            _panelContainer.Content = view;
         }
 
         
