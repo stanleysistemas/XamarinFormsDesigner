@@ -2,9 +2,6 @@
 
 XenForms is a Xamarin.Forms UI Designer. It allows you to open, visually manipulate, and save out XAML. There are two applications that collectively make up the product.
 
-##Donate
-The XenForms source has been made available under the MIT License. However, if you would like to donate money to the development effort, please use this [PayPal Donation Page](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BDVKB4VCKYEZ8).
-
 ##Definitions
 1. XenForms Toolbox
  
