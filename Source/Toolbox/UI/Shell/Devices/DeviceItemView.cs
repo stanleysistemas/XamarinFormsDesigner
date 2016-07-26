@@ -6,7 +6,6 @@ using Eto.Drawing;
 using Eto.Forms;
 using XenForms.Core;
 using XenForms.Core.Networking;
-using XenForms.Core.Platform;
 using XenForms.Core.Toolbox;
 using XenForms.Toolbox.UI.Shell.Images;
 

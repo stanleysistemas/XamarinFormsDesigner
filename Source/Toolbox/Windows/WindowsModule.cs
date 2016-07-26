@@ -2,6 +2,7 @@
 using Ninject.Modules;
 using NLog;
 using XenForms.Core;
+using XenForms.Core.Toolbox;
 using XenForms.Core.Toolbox.Shell;
 using XenForms.Toolbox.UI.Shell;
 
@@ -17,6 +18,7 @@ namespace XenForms.Windows
             Bind<ILogger>().ToMethod(p => LogManager.GetCurrentClassLogger());
             Bind<ISettingsStore>().To<WindowsSettingsStore>();
             Bind<XenFormsEnvironment>().To<WindowsXenFormsEnvironment>();
+            Bind<IAppLocator>().To<WindowsAppLocator>();
 
             _logger = LogManager.GetCurrentClassLogger();
             _logger.Info("Scanning for startup tasks.");

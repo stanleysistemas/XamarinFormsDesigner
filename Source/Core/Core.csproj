@@ -69,6 +69,7 @@
     <Compile Include="Reflection\XenPropertyMethods.cs" />
     <Compile Include="Reflection\XenReflectionPropertyExtensions.cs" />
     <Compile Include="Toolbox\DefaultPropertyEditorManager.cs" />
+    <Compile Include="Toolbox\IAppLocator.cs" />
     <Compile Include="Toolbox\ToolboxApp.cs" />
     <Compile Include="Toolbox\Actions\AddSupportedTypeAction.cs" />
     <Compile Include="Toolbox\Actions\AttachedPropertiesReceivedAction.cs" />
