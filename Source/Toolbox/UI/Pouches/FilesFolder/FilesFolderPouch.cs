@@ -121,7 +121,11 @@ namespace XenForms.Toolbox.UI.Pouches.FilesFolder
         /// </summary>
         private void OnOpenFolderClicked()
         {
-            var dialog = new SelectFolderDialog();
+            var dialog = new SelectFolderDialog
+            {
+                Title = "It's recommended that you select your application's solution folder. This folder should contain your packages, components, compiled assemblies, and XAML."
+            };
+
             var result = dialog.ShowDialog(Application.Instance.MainForm);
 
             if (result == DialogResult.Ok)
