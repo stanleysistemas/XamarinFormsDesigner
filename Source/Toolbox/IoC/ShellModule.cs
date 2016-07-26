@@ -11,9 +11,11 @@ namespace Toolbox.IoC
     {
         public override void Load()
         {
-            Bind<VisualTreePouch>().ToSelf().InTransientScope();
+            Bind<ConnectCommandModel>().ToSelf().InTransientScope();
+            Bind<ConnectCommand>().ToSelf().InTransientScope();
+
             Bind<DisconnectCommand>().ToSelf().InSingletonScope();
-            Bind<ConnectCommand>().ToSelf().InSingletonScope();
+            Bind<VisualTreePouch>().ToSelf().InTransientScope();
 
             Bind<SettingsDialog>().ToSelf().InTransientScope();
             Bind<SettingsCommand>().ToSelf().InTransientScope();

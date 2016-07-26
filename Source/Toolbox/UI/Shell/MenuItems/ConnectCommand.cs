@@ -6,6 +6,7 @@ using XenForms.Core.Networking;
 using XenForms.Core.Toolbox;
 using XenForms.Toolbox.UI.Resources;
 using XenForms.Toolbox.UI.Shell.Images;
+using XenForms.Toolbox.UI.Shell.Styling;
 
 namespace XenForms.Toolbox.UI.Shell.MenuItems
 {
@@ -112,7 +113,7 @@ namespace XenForms.Toolbox.UI.Shell.MenuItems
                 Title = ConnectResource.Connect_to_host,
                 DefaultButton = _connectBtn,
                 AbortButton = _cancelBtn,
-                Padding = new Padding(Spacing),
+                Padding = AppStyles.WindowPadding,
                 ShowInTaskbar = false,
                 Icon = AppImages.Xf
             };

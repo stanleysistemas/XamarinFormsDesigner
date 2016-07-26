@@ -13,6 +13,7 @@ using XenForms.Toolbox.UI.Shell.Devices;
 using XenForms.Toolbox.UI.Shell.Images;
 using XenForms.Toolbox.UI.Shell.MenuItems;
 using XenForms.Toolbox.UI.Shell.Pouches;
+using XenForms.Toolbox.UI.Shell.Styling;
 
 namespace XenForms.Toolbox.UI.Shell
 {
@@ -61,7 +62,7 @@ namespace XenForms.Toolbox.UI.Shell
             _newPage.Enabled = false;
 
             Title = AppResource.Title_disconnected;
-            Padding = new Padding(5);
+            Padding = AppStyles.WindowPadding;
             Maximizable = false;
             Resizable = true;
             Icon = AppImages.Xf;

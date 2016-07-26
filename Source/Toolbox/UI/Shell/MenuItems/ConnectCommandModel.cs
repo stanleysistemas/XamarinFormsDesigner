@@ -89,20 +89,19 @@ namespace XenForms.Toolbox.UI.Shell.MenuItems
 
         public void Save()
         {
-            if (!RememberSettings)
+            if (RememberSettings)
             {
-                Port = string.Empty;
-                Host = string.Empty;
+                _store.Set(UserSettingKeys.Builtin.RemoteHost, Host);
+                _store.Set(UserSettingKeys.Builtin.RemotePort, Port);
+                _store.Set(UserSettingKeys.Builtin.RememberHost, RememberSettings);
             }
-
-            _store.Set(UserSettingKeys.Builtin.RemoteHost, Host);
-            _store.Set(UserSettingKeys.Builtin.RemotePort, Port);
-            _store.Set(UserSettingKeys.Builtin.RememberHost, RememberSettings);
         }
 
 
         public void Restore()
         {
+            Clear();
+
             var host = _store.GetString(UserSettingKeys.Builtin.RemoteHost);
             var port = _store.GetString(UserSettingKeys.Builtin.RemotePort);
 
@@ -122,7 +121,16 @@ namespace XenForms.Toolbox.UI.Shell.MenuItems
             OkEnabled = !string.IsNullOrWhiteSpace(Host) && ServiceEndpoint.IsValidPort(Port);
         }
 
-        
+
+        private void Clear()
+        {
+            Host = string.Empty;
+            Port = string.Empty;
+            AccessKey = string.Empty;
+            RememberSettings = false;
+        }
+
+
         #region Property Changed
 
 

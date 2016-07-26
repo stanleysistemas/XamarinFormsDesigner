@@ -55,8 +55,8 @@ namespace XenForms.Toolbox.UI.Shell.Devices
             if (Initialize())
             {
                 _groups.Items.Add(CreateMobileGroup(AndroidDeviceBridge.Platform, "No devices found.", _devices));
-                _groups.Items.Add(CreateMobileGroup("iOS", "Disabled during Beta.", null));
-                _groups.Items.Add(CreateMobileGroup("Windows", "Disabled during Beta.", null));
+                //_groups.Items.Add(CreateMobileGroup("iOS", "Disabled during Beta.", null));
+                //_groups.Items.Add(CreateMobileGroup("Windows", "Disabled during Beta.", null));
 
                 if (_promptDesignerRestart)
                 {
