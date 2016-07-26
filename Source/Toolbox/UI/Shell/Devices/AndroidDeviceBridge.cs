@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Win32;
 using SharpAdbClient;
 using SharpAdbClient.DeviceCommands;
 using XenForms.Core.Toolbox;
@@ -47,7 +46,7 @@ namespace XenForms.Toolbox.UI.Shell.Devices
                     return _customAdbLocation;
                 }
 
-                var regPath = GetAndroidSdkRegistryEntry();
+                var regPath = ToolboxApp.AppLocator.GetAdbInstallFolder();
                 if (!string.IsNullOrWhiteSpace(regPath))
                 {
                     var regLoc = Path.Combine(regPath, "platform-tools\\adb.exe");
@@ -290,25 +289,6 @@ namespace XenForms.Toolbox.UI.Shell.Devices
             var local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var path = Path.Combine(local, "Android", folderName, "platform-tools", "adb.exe");
             return path;
-        }
-
-
-        private string GetAndroidSdkRegistryEntry()
-        {
-            try
-            {
-                var path = string.Format(@"SOFTWARE{0}Android SDK Tools", 
-                    Environment.Is64BitProcess ? @"\Wow6432Node\" : @"\");
-
-                using (var entry = Registry.LocalMachine.OpenSubKey(path))
-                {
-                    return entry?.GetValue("Path") as string;
-                }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
 

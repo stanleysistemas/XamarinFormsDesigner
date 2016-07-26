@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Win32;
+using XenForms.Core.Toolbox;
 
 // ReSharper disable InconsistentNaming
 namespace XenForms.Toolbox.UI.VisualStudio
@@ -95,20 +95,7 @@ namespace XenForms.Toolbox.UI.VisualStudio
 
         private static string GetInstallationFolder(VisualStudioVersion version)
         {
-            try
-            {
-                var registryKeyString = string.Format(@"SOFTWARE{0}Microsoft\VisualStudio\{1}",
-                    Environment.Is64BitProcess ? @"\Wow6432Node\" : "\\", GetVersionNumber(version));
-
-                using (var localMachineKey = Registry.LocalMachine.OpenSubKey(registryKeyString))
-                {
-                    return localMachineKey?.GetValue("InstallDir") as string;
-                }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return ToolboxApp.AppLocator.GetVisualStudioInstallFolder(GetVersionNumber(version));
         }
 
 

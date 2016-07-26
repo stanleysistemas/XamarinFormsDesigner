@@ -26,6 +26,15 @@ namespace XenForms.Core.Toolbox
             }
         }
 
+        private static IAppLocator _appLocator;
+        public static IAppLocator AppLocator
+        {
+            get
+            {
+                if (_appLocator != null) return _appLocator;
+                return _appLocator = Services.Get<IAppLocator>();
+            }
+        }
 
         private static DesignerBridge _designer;
         public static DesignerBridge Designer

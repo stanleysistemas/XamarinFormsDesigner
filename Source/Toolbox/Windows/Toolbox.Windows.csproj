@@ -150,6 +150,7 @@
     <Compile Include="PluginModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowsAppLocator.cs" />
     <Compile Include="WindowsModule.cs" />
     <Compile Include="WindowsSettingsStore.cs" />
     <Compile Include="WindowsXenFormsEnvironment.cs" />
