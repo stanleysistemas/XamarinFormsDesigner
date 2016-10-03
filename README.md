@@ -1,6 +1,6 @@
 #Xamarin.Forms UI Designer
 
-Visually manipulate and save out XAML. There are two applications that collectively make up the product.
+Visually manipulate and save out XAML.
 
 ##Definitions
 1. Toolbox
